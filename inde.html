@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub徹底解説ガイド：非エンジニアがAIとペアプログラミングする完全マニュアル</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .code-block {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.25rem;
+        }
+        .feature-card {
+            transition: transform 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-2px);
+        }
+        .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .screenshot {
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <i class="fab fa-github text-6xl mb-6"></i>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">GitHub徹底解説ガイド</h1>
+            <p class="text-xl md:text-2xl mb-8">非エンジニアがAIとペアプログラミングする完全マニュアル</p>
+            <div class="bg-white bg-opacity-20 rounded-lg p-6 max-w-2xl mx-auto">
+                <p class="text-lg">🚀 GitHubの基本から応用まで、スクリーンショット付きで徹底解説</p>
+                <p class="text-lg">🤖 AI（GitHub Copilot）を活用したペアプログラミングの実践方法</p>
+                <p class="text-lg">📱 無料でWebサイトを公開する方法まで完全カバー</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Table of Contents -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">📚 目次</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
+                    <h3 class="font-bold text-lg mb-2">1. GitHubとは？</h3>
+                    <p class="text-gray-600">基本概念と重要性を理解</p>
+                </div>
+                <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                    <h3 class="font-bold text-lg mb-2">2. GitHub Copilot</h3>
+                    <p class="text-gray-600">AIペアプログラミングの革命</p>
+                </div>
+                <div class="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-500">
+                    <h3 class="font-bold text-lg mb-2">3. アカウント作成</h3>
+                    <p class="text-gray-600">基本設定まで完全ガイド</p>
+                </div>
+                <div class="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-500">
+                    <h3 class="font-bold text-lg mb-2">4. GitHub Desktop</h3>
+                    <p class="text-gray-600">初心者に優しいGUI操作</p>
+                </div>
+                <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-500">
+                    <h3 class="font-bold text-lg mb-2">5. 基本ワークフロー</h3>
+                    <p class="text-gray-600">Clone → Edit → Commit → Push</p>
+                </div>
+                <div class="bg-indigo-50 p-6 rounded-lg border-l-4 border-indigo-500">
+                    <h3 class="font-bold text-lg mb-2">6. チーム開発</h3>
+                    <p class="text-gray-600">プルリクエスト & Issues</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Section 1: What is GitHub -->
+        <section id="github-basic" class="mb-20">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 flex items-center">
+                    <i class="fas fa-question-circle text-blue-500 mr-4"></i>
+                    GitHubとは？なぜ重要なのか
+                </h2>
+                
+                <div class="mb-8">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/v1/webpage_capture_screen_tool_call/2a95c397-f42d-4465-904b-db81edca796d" alt="GitHub メインページ" class="w-full screenshot mb-6">
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-700">GitHubの正体を理解しよう</h3>
+                        <div class="bg-gray-100 p-6 rounded-lg">
+                            <p class="text-lg font-semibold mb-4">GitHub = Git + Hub</p>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-history text-blue-500 mt-1 mr-3"></i>
+                                    <div>
+                                        <strong>Git</strong>: ファイルの変更履歴を自動で記録する「タイムマシン」システム
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-users text-green-500 mt-1 mr-3"></i>
+                                    <div>
+                                        <strong>Hub</strong>: みんなでコードを共有・協力するためのオンライン「基地」
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-700">非エンジニアにとっての価値</h3>
+                        <div class="space-y-4">
+                            <div class="feature-card bg-blue-50 p-4 rounded-lg">
+                                <i class="fas fa-shield-alt text-blue-500 mr-3"></i>
+                                <strong>安全性</strong>: コードが消失する心配がない
+                            </div>
+                            <div class="feature-card bg-green-50 p-4 rounded-lg">
+                                <i class="fas fa-chart-line text-green-500 mr-3"></i>
+                                <strong>成長</strong>: AIと一緒にプログラミングスキルを向上
+                            </div>
+                            <div class="feature-card bg-purple-50 p-4 rounded-lg">
+                                <i class="fas fa-handshake text-purple-500 mr-3"></i>
+                                <strong>協力</strong>: 他の人との共同作業が簡単
+                            </div>
+                            <div class="feature-card bg-yellow-50 p-4 rounded-lg">
+                                <i class="fas fa-globe text-yellow-500 mr-3"></i>
+                                <strong>公開</strong>: 作品を世界に発信できる
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
+                    <h4 class="font-bold text-lg mb-2 text-blue-800">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        GitHubを一言で表すと
+                    </h4>
+                    <p class="text-lg text-blue-700">
+                        「コード専用のタイムマシン機能付きクラウドストレージであり、みんなで協力するための秘密基地！」
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: GitHub Copilot -->
+        <section id="github-copilot" class="mb-20">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 flex items-center">
+                    <i class="fas fa-robot text-green-500 mr-4"></i>
+                    GitHub Copilot：AIペアプログラミングの革命
+                </h2>
+
+                <div class="mb-8">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/v1/webpage_capture_screen_tool_call/9f67fd74-6eac-42cb-ac64-13fc5caa0870" alt="GitHub Copilot インターフェース" class="w-full screenshot mb-6">
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-700">GitHub Copilotとは？</h3>
+                        <p class="text-lg mb-4">GitHub Copilotは、<strong>AIがあなたの"プログラミング相棒"</strong>となってくれるツールです。</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-magic text-purple-500 mt-1 mr-3"></i>
+                                <div><strong>リアルタイムコード提案</strong>: 書きたいコードを予測して提案</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-language text-blue-500 mt-1 mr-3"></i>
+                                <div><strong>自然言語での指示</strong>: 日本語でやりたいことを説明するだけ</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-bug text-red-500 mt-1 mr-3"></i>
+                                <div><strong>エラー解決支援</strong>: バグの修正方法も教えてくれる</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-rocket text-green-500 mt-1 mr-3"></i>
+                                <div><strong>学習効率向上</strong>: プログラミング学習が40%速くなる</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-700">学生なら無料で利用可能！</h3>
+                        <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                            <p class="font-semibold mb-4 text-green-800">
+                                <i class="fas fa-graduation-cap mr-2"></i>
+                                GitHub Educationに登録すれば無料！
+                            </p>
+                            <ol class="space-y-2 text-sm">
+                                <li class="flex items-center">
+                                    <div class="step-number mr-3 text-xs">1</div>
+                                    GitHub Educationにアクセス
+                                </li>
+                                <li class="flex items-center">
+                                    <div class="step-number mr-3 text-xs">2</div>
+                                    学校のメールアドレスで認証
+                                </li>
+                                <li class="flex items-center">
+                                    <div class="step-number mr-3 text-xs">3</div>
+                                    学生証など証明書類をアップロード
+                                </li>
+                                <li class="flex items-center">
+                                    <div class="step-number mr-3 text-xs">4</div>
+                                    承認されれば即座に利用開始！
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <h4 class="font-bold text-lg mb-4">AIペアプログラミングの活用例</h4>
+                    <div class="code-block">
+                        <pre class="text-sm"><code>// コメントで指示するだけで、AIが関数を生成
+// 配列から重複を除去する関数を作成
+function removeDuplicates(arr) {
+    return [...new Set(arr)];
+}
+
+// ボタンクリック時の動作
+// ページを上にスクロールする機能
+document.getElementById('scroll-top').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Account Setup -->
+        <section id="account-setup" class="mb-20">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 flex items-center">
+                    <i class="fas fa-user-plus text-purple-500 mr-4"></i>
+                    アカウント作成から基本設定まで
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-700">ステップ1：GitHubアカウント作成</h3>
+                        <img src="https://cdn1.genspark.ai/user-upload-image/v1/webpage_capture_screen_tool_call/f8e57e41-b203-4d02-b2d2-8357fc1456ec" alt="GitHub サインアップ画面" class="w-full screenshot mb-4">
+                        
+                        <ol class="space-y-3">
+                            <li class="flex items-start">
+                                <div class="step-number mr-3">1</div>
+                                <div><strong>GitHub.com</strong>にアクセス</div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="step-number mr-3">2</div>
+                                <div><strong>「Sign up」</strong>をクリック</div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="step-number mr-3">3</div>
+                                <div>必要情報を入力：
+                                    <ul class="ml-4 mt-2 space-y-1 text-sm">
+                                        <li>• <strong>Email</strong>: 普段使うメールアドレス</li>
+                                        <li>• <strong>Password</strong>: 15文字以上推奨</li>
+                                        <li>• <strong>Username</strong>: プログラマーとしての名前</li>
+                                        <li>• <strong>Country</strong>: 居住国を選択</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-700">ステップ2：プロフィール設定</h3>
+                        <div class="bg-purple-50 p-6 rounded-lg">
+                            <p class="mb-4">アカウント作成後、プロフィールを充実させましょう：</p>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-image text-purple-500 mt-1 mr-3"></i>
+                                    <div><strong>プロフィール画像</strong>: あなたらしい画像をアップロード</div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-edit text-blue-500 mt-1 mr-3"></i>
+                                    <div><strong>自己紹介（Bio）</strong>: 「プログラミング学習中！」など</div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-map-marker-alt text-red-500 mt-1 mr-3"></i>
+                                    <div><strong>場所</strong>: 住んでいる都市</div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-link text-green-500 mt-1 mr-3"></i>
+                                    <div><strong>ウェブサイト</strong>: ブログやSNSのリンク</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: GitHub Desktop -->
+        <section id="github-desktop" class="mb-20">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 flex items-center">
+                    <i class="fas fa-desktop text-yellow-500 mr-4"></i>
+                    GitHub Desktop：初心者に優しいGUI操作
+                </h2>
+
+                <div class="mb-8">
+                    <img src="https://cdn.lo4d.com/t/screenshot/800/github-desktop.png" alt="GitHub Desktop インターフェース" class="w-full screenshot mb-6">
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-700">GitHub Desktopをインストール</h3>
+                        <ol class="space-y-3">
+                            <li class="flex items-start">
+                                <div class="step-number mr-3">1</div>
+                                <div><strong>GitHub Desktop公式サイト</strong>からダウンロード</div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="step-number mr-3">2</div>
+                                <div>インストーラーを実行</div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="step-number mr-3">3</div>
+                                <div>GitHubアカウントでログイン</div>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-700">GitHub Desktopのメリット</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-mouse-pointer text-blue-500 mt-1 mr-3"></i>
+                                <div><strong>視覚的操作</strong>: マウスクリックでGit操作が可能</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-eye text-green-500 mt-1 mr-3"></i>
+                                <div><strong>変更の可視化</strong>: ファイルの変更点が一目でわかる</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-code-branch text-purple-500 mt-1 mr-3"></i>
+                                <div><strong>簡単なブランチ管理</strong>: ブランチの作成・切り替えが簡単</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-wrench text-red-500 mt-1 mr-3"></i>
+                                <div><strong>コンフリクト解決</strong>: 問題が起きても視覚的に解決</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-50 p-6 rounded-lg border border-yellow-200">
+                    <h4 class="font-bold text-lg mb-4 text-yellow-800">基本インターフェースの説明</h4>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <ul class="space-y-2">
+                            <li><strong>1. リポジトリリスト</strong>: 管理しているプロジェクト一覧</li>
+                            <li><strong>2. ブランチ選択</strong>: 現在作業中のブランチ</li>
+                            <li><strong>3. 変更ファイル一覧</strong>: 編集したファイルの表示</li>
+                        </ul>
+                        <ul class="space-y-2">
+                            <li><strong>4. コミット履歴</strong>: これまでの変更記録</li>
+                            <li><strong>5. コミットボタン</strong>: 変更を記録するボタン</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Basic Workflow -->
+        <section id="basic-workflow" class="mb-20">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 flex items-center">
+                    <i class="fas fa-sync-alt text-red-500 mr-4"></i>
+                    基本ワークフロー：Clone → Edit → Commit → Push
+                </h2>
+
+                <div class="mb-8">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/v1/webpage_capture_screen_tool_call/0d22e299-2ca6-4203-86b8-a19e50ccc1a6" alt="GitHub ログイン画面" class="w-full screenshot mb-6">
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Step 1 -->
+                    <div class="border-l-4 border-blue-500 pl-6">
+                        <h3 class="text-2xl font-bold mb-4 text-blue-700">ステップ1：リポジトリを作成</h3>
+                        <ol class="space-y-2">
+                            <li>1. GitHub.comで<strong>「New repository」</strong>をクリック</li>
+                            <li>2. <strong>Repository name</strong>: プロジェクト名を入力（例：my-first-project）</li>
+                            <li>3. <strong>Description</strong>: プロジェクトの説明</li>
+                            <li>4. <strong>Public/Private</strong>: まずはPrivateを選択</li>
+                            <li>5. <strong>Add README</strong>: 必ずチェックを入れる！</li>
+                            <li>6. <strong>「Create repository」</strong>をクリック</li>
+                        </ol>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="border-l-4 border-green-500 pl-6">
+                        <h3 class="text-2xl font-bold mb-4 text-green-700">ステップ2：ローカルにクローン</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold mb-2">GitHub Desktopを使用する場合：</h4>
+                                <ol class="space-y-1 text-sm">
+                                    <li>1. リポジトリページで「Code」→「Open with GitHub Desktop」</li>
+                                    <li>2. 保存場所を選択</li>
+                                    <li>3. 「Clone」をクリック</li>
+                                </ol>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">手動でクローンする場合：</h4>
+                                <ol class="space-y-1 text-sm">
+                                    <li>1. リポジトリのURLをコピー</li>
+                                    <li>2. GitHub Desktopで「Clone a repository」</li>
+                                    <li>3. URLを貼り付けて「Clone」</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="border-l-4 border-purple-500 pl-6">
+                        <h3 class="text-2xl font-bold mb-4 text-purple-700">ステップ3：ファイルを編集</h3>
+                        <p class="mb-4">お気に入りのエディタ（VS Code、Cursorなど）でファイルを開き、自由に編集しましょう。</p>
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h5 class="font-semibold mb-2">初心者におすすめの最初の編集：</h5>
+                            <div class="code-block">
+                                <pre class="text-sm"><code># My First GitHub Project
+
+こんにちは！これは私の最初のGitHubプロジェクトです。
+
+## やりたいこと
+- [ ] HTMLページを作成
+- [ ] CSSでスタイリング
+- [ ] JavaScriptで動きを追加
+
+## 学習記録
+- 2025/06/18: GitHubアカウント作成
+- 2025/06/18: 最初のリポジトリ作成</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="border-l-4 border-yellow-500 pl-6">
+                        <h3 class="text-2xl font-bold mb-4 text-yellow-700">ステップ4：変更をコミット</h3>
+                        <h4 class="font-semibold mb-3">GitHub Desktopでのコミット手順：</h4>
+                        <ol class="space-y-2">
+                            <li>1. 左側の<strong>「Changes」</strong>タブで変更されたファイルを確認</li>
+                            <li>2. 各ファイルの隣にある✓マークをクリック（ステージング）</li>
+                            <li>3. 下部の<strong>「Summary」</strong>に変更内容を記入</li>
+                            <li>4. <strong>「Commit to main」</strong>をクリック</li>
+                        </ol>
+                        
+                        <div class="mt-4 bg-yellow-50 p-4 rounded-lg">
+                            <h5 class="font-semibold mb-2">良いコミットメッセージの例：</h5>
+                            <div class="grid md:grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <p class="text-green-600 font-semibold">✅ 良い例：</p>
+                                    <ul class="space-y-1">
+                                        <li>• ホームページのレイアウトを修正</li>
+                                        <li>• ログイン機能を追加</li>
+                                        <li>• バグ修正：ボタンが押せない問題を解決</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p class="text-red-600 font-semibold">❌ 悪い例：</p>
+                                    <ul class="space-y-1">
+                                        <li>• 更新（何を更新したか不明）</li>
+                                        <li>• あああ（意味がない）</li>
+                                        <li>• test（テスト内容が不明）</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="border-l-4 border-red-500 pl-6">
+                        <h3 class="text-2xl font-bold mb-4 text-red-700">ステップ5：GitHubにプッシュ</h3>
+                        <ol class="space-y-2">
+                            <li>1. GitHub Desktopの上部にある<strong>「Push origin」</strong>をクリック</li>
+                            <li>2. 初回は<strong>「Publish branch」</strong>と表示される場合があります</li>
+                            <li>3. プッシュが完了すると、GitHub.comで変更が確認できます</li>
+                        </ol>
+
+                        <div class="mt-4 bg-red-50 p-4 rounded-lg text-center">
+                            <p class="font-bold text-lg text-red-800">この基本サイクルを覚えよう：</p>
+                            <p class="text-xl mt-2">編集 → ステージング → コミット → プッシュ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Collaboration -->
+        <section id="collaboration" class="mb-20">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 flex items-center">
+                    <i class="fas fa-users text-indigo-500 mr-4"></i>
+                    プルリクエストとIssues：チーム開発の基本
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-700">プルリクエスト（Pull Request）</h3>
+                        <p class="mb-4">プルリクエストは「この変更をメインブランチに取り込んでください」という依頼です。</p>
+                        
+                        <h4 class="font-semibold mb-3">作成手順：</h4>
+                        <ol class="space-y-2">
+                            <li class="flex items-start">
+                                <div class="step-number mr-3">1</div>
+                                <div>新しいブランチを作成</div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="step-number mr-3">2</div>
+                                <div>ファイルを編集・コミット</div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="step-number mr-3">3</div>
+                                <div>GitHubでプルリクエストを作成</div>
+                            </li>
+                        </ol>
+
+                        <div class="code-block mt-4">
+                            <pre class="text-sm"><code>git checkout -b feature/new-function
+# ファイルを編集
+git add .
+git commit -m "新機能を追加"
+git push origin feature/new-function</code></pre>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-700">Issuesでタスク管理</h3>
+                        <h4 class="font-semibold mb-3">Issue作成手順：</h4>
+                        <ol class="space-y-2">
+                            <li class="flex items-start">
+                                <div class="step-number mr-3">1</div>
+                                <div>リポジトリの「Issues」タブをクリック</div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="step-number mr-3">2</div>
+                                <div>「New issue」を選択</div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="step-number mr-3">3</div>
+                                <div>タイトル・本文・ラベルを記入</div>
+                            </li>
+                        </ol>
+
+                        <div class="bg-indigo-50 p-4 rounded-lg mt-4">
+                            <h5 class="font-semibold mb-2">Issue記入例：</h5>
+                            <div class="code-block">
+                                <pre class="text-sm"><code>## 概要
+ホームページにお問い合わせフォームを追加したい
+
+## 詳細
+- 名前、メール、メッセージの入力欄
+- 送信ボタン
+- バリデーション機能
+
+## 完了条件
+- [ ] HTMLフォームの作成
+- [ ] CSSでのスタイリング
+- [ ] JavaScriptでのバリデーション</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: GitHub Pages -->
+        <section id="github-pages" class="mb-20">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 flex items-center">
+                    <i class="fas fa-globe text-teal-500 mr-4"></i>
+                    GitHub Pages：無料でWebサイト公開
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-700">GitHub Pagesとは？</h3>
+                        <p class="mb-4">GitHubが提供する<strong>無料の静的サイトホスティングサービス</strong>です。HTMLやCSSで作ったサイトを世界に公開できます。</p>
+                        
+                        <div class="bg-teal-50 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2">公開されるURL：</h4>
+                            <div class="code-block">
+                                <pre class="text-sm"><code>https://ユーザー名.github.io/リポジトリ名/</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-700">設定方法</h3>
+                        <ol class="space-y-2">
+                            <li class="flex items-start">
+                                <div class="step-number mr-3">1</div>
+                                <div>リポジトリの「Settings」をクリック</div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="step-number mr-3">2</div>
+                                <div>左メニューの「Pages」を選択</div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="step-number mr-3">3</div>
+                                <div>「Source」で「Deploy from a branch」を選択</div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="step-number mr-3">4</div>
+                                <div>「Branch」で「main」を選択</div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="step-number mr-3">5</div>
+                                <div>「Save」をクリック</div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="bg-teal-50 p-6 rounded-lg">
+                    <h4 class="font-bold text-lg mb-4">独自ドメインの設定</h4>
+                    <ol class="space-y-2">
+                        <li>1. ドメインを取得（お名前.comなど）</li>
+                        <li>2. GitHubのPages設定で「Custom domain」に入力</li>
+                        <li>3. DNSの設定でCNAMEレコードを追加</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Troubleshooting -->
+        <section id="troubleshooting" class="mb-20">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 flex items-center">
+                    <i class="fas fa-exclamation-triangle text-orange-500 mr-4"></i>
+                    よくある問題と解決方法
+                </h2>
+
+                <div class="space-y-6">
+                    <div class="border border-red-200 bg-red-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-3 text-red-700">エラー1：「Permission denied (publickey)」</h3>
+                        <p class="mb-2"><strong>原因</strong>: SSH設定が正しくない</p>
+                        <p class="mb-2"><strong>解決方法</strong>:</p>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>HTTPS URLを使用する</li>
+                            <li>またはSSH鍵を正しく設定する</li>
+                        </ul>
+                    </div>
+
+                    <div class="border border-yellow-200 bg-yellow-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-3 text-yellow-700">エラー2：「merge conflict」</h3>
+                        <p class="mb-2"><strong>原因</strong>: 同じファイルの同じ行を複数人が編集</p>
+                        <p class="mb-2"><strong>解決方法</strong>:</p>
+                        <ol class="list-decimal list-inside space-y-1">
+                            <li>GitHub Desktopの「Resolve conflicts」をクリック</li>
+                            <li>手動でコンフリクトを解決</li>
+                            <li>解決後、コミット</li>
+                        </ol>
+                    </div>
+
+                    <div class="border border-blue-200 bg-blue-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-3 text-blue-700">エラー3：「failed to push」</h3>
+                        <p class="mb-2"><strong>原因</strong>: リモートリポジトリが更新されている</p>
+                        <p class="mb-2"><strong>解決方法</strong>:</p>
+                        <ol class="list-decimal list-inside space-y-1">
+                            <li>まず<code>git pull</code>で最新状態を取得</li>
+                            <li>コンフリクトがあれば解決</li>
+                            <li>再度<code>git push</code></li>
+                        </ol>
+                    </div>
+
+                    <div class="border border-green-200 bg-green-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-3 text-green-700">初心者向けトラブル回避策</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-sync text-green-500 mt-1 mr-3"></i>
+                                <div><strong>定期的にプル</strong>: 他の人の変更を定期的に取り込む</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-puzzle-piece text-blue-500 mt-1 mr-3"></i>
+                                <div><strong>小さなコミット</strong>: 大きな変更は分割してコミット</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-comment text-purple-500 mt-1 mr-3"></i>
+                                <div><strong>意味のあるメッセージ</strong>: コミットメッセージは具体的に</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-code-branch text-yellow-500 mt-1 mr-3"></i>
+                                <div><strong>バックアップブランチ</strong>: 重要な作業前にブランチを作成</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9: Next Steps -->
+        <section id="next-steps" class="mb-20">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 flex items-center">
+                    <i class="fas fa-rocket text-pink-500 mr-4"></i>
+                    次のステップ：さらなる活用方法
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-700">1. GitHub Actions：自動化の世界</h3>
+                        <p class="mb-4">CI/CDパイプラインを構築して、コードのテストやデプロイを自動化：</p>
+                        <div class="code-block">
+                            <pre class="text-sm"><code>name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+    - run: npm ci
+    - run: npm run build
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist</code></pre>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-700">2. GitHub Codespaces：クラウド開発環境</h3>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-cloud text-blue-500 mt-1 mr-3"></i>
+                                <div>ブラウザ上で完全な開発環境を利用</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-bolt text-yellow-500 mt-1 mr-3"></i>
+                                <div>セットアップ不要で即座に開発開始</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-gift text-green-500 mt-1 mr-3"></i>
+                                <div>月60時間無料で利用可能</div>
+                            </li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold mb-4 text-gray-700">3. オープンソースプロジェクトへの貢献</h3>
+                        <ol class="space-y-2">
+                            <li>1. 興味のあるプロジェクトを<strong>Star</strong></li>
+                            <li>2. <strong>Fork</strong>して自分のアカウントにコピー</li>
+                            <li>3. 改善案を実装</li>
+                            <li>4. <strong>Pull Request</strong>で貢献提案</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-pink-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-700">4. ポートフォリオサイトの構築</h3>
+                    <p class="mb-4">GitHub Pagesを使って、プロフェッショナルなポートフォリオを作成：</p>
+                    <div class="code-block">
+                        <pre class="text-sm"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;田中太郎 - Web Developer&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;田中太郎&lt;/h1&gt;
+        &lt;p&gt;フロントエンド開発者 | React愛好家&lt;/p&gt;
+    &lt;/header&gt;
+    
+    &lt;section class="projects"&gt;
+        &lt;h2&gt;プロジェクト&lt;/h2&gt;
+        &lt;div class="project"&gt;
+            &lt;h3&gt;ToDoアプリ&lt;/h3&gt;
+            &lt;p&gt;ReactとFirebaseを使用したタスク管理アプリ&lt;/p&gt;
+            &lt;a href="https://github.com/tanaka/todo-app"&gt;GitHubで見る&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="mb-20">
+            <div class="bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold mb-8 text-center">
+                    <i class="fas fa-trophy mr-4"></i>
+                    まとめ：GitHubで開発ライフが変わる
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">あなたが手に入れるもの</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-shield-alt text-blue-300 mt-1 mr-3"></i>
+                                <div><strong>安心感</strong>: コードの喪失リスクゼロ</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-rocket text-green-300 mt-1 mr-3"></i>
+                                <div><strong>効率性</strong>: AIとのペアプログラミングで学習加速</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-globe text-yellow-300 mt-1 mr-3"></i>
+                                <div><strong>可視性</strong>: 作品を世界に発信</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-handshake text-purple-300 mt-1 mr-3"></i>
+                                <div><strong>協力性</strong>: 他の開発者との繋がり</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-chart-line text-red-300 mt-1 mr-3"></i>
+                                <div><strong>成長性</strong>: プロレベルの開発ワークフローを習得</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">GitHub活用の心構え</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-seedling text-green-300 mt-1 mr-3"></i>
+                                <div><strong>完璧を求めない</strong>: 最初は小さく始める</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-calendar-day text-blue-300 mt-1 mr-3"></i>
+                                <div><strong>継続する</strong>: 毎日少しずつでもコミット</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-book text-yellow-300 mt-1 mr-3"></i>
+                                <div><strong>学び続ける</strong>: エラーは成長の機会</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-share text-purple-300 mt-1 mr-3"></i>
+                                <div><strong>共有する</strong>: 学んだことを他の人にも伝える</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="text-center bg-white bg-opacity-20 rounded-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4">最後に</h3>
+                    <p class="text-lg mb-4">
+                        GitHubは単なるツールではなく、<strong>プログラマーとしてのあなたの成長を支える基盤</strong>です。
+                        非エンジニアだからこそ、新鮮な視点でプログラミングの世界に飛び込めます。
+                    </p>
+                    <p class="text-lg mb-4">
+                        AIと一緒にコードを書き、世界中の開発者と協力し、あなたのアイデアを形にしていきましょう。
+                    </p>
+                    <p class="text-2xl font-bold">
+                        <i class="fas fa-rocket mr-2"></i>
+                        今日からあなたもGitHubで新しい冒険を始めませんか？
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- References -->
+        <section class="mb-20">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 flex items-center">
+                    <i class="fas fa-book text-indigo-500 mr-4"></i>
+                    参考リンク
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="https://docs.github.com/ja" class="text-blue-600 hover:underline flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                GitHub 公式ドキュメント
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://education.github.com/" class="text-blue-600 hover:underline flex items-center">
+                                <i class="fas fa-graduation-cap mr-2"></i>
+                                GitHub Education
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://desktop.github.com/" class="text-blue-600 hover:underline flex items-center">
+                                <i class="fas fa-desktop mr-2"></i>
+                                GitHub Desktop
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="https://copilot.github.com/" class="text-blue-600 hover:underline flex items-center">
+                                <i class="fas fa-robot mr-2"></i>
+                                GitHub Copilot
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://git-scm.com/book/ja/v2" class="text-blue-600 hover:underline flex items-center">
+                                <i class="fas fa-book-open mr-2"></i>
+                                Git 学習リソース
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://pages.github.com/" class="text-blue-600 hover:underline flex items-center">
+                                <i class="fas fa-globe mr-2"></i>
+                                GitHub Pages
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mt-8 p-6 bg-indigo-50 rounded-lg text-center">
+                    <p class="text-lg text-indigo-800">
+                        この記事が、あなたのプログラミング学習の第一歩となれば幸いです。<br>
+                        質問や困ったことがあれば、GitHubのコミュニティやフォーラムで気軽に相談してくださいね！
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-lg mb-4">
+                <i class="fab fa-github text-2xl mr-2"></i>
+                GitHub徹底解説ガイド
+            </p>
+            <p class="text-sm opacity-75">
+                非エンジニアがAIとペアプログラミングする完全マニュアル
+            </p>
+            <p class="text-sm opacity-75 mt-2">
+                © 2025 - プログラミング学習を支援するために作成
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
